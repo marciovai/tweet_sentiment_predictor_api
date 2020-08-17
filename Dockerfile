@@ -9,7 +9,7 @@ ARG external_lib_path
 
 # prepares environment
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install software-properties-common locales -y 
+RUN apt-get install software-properties-common -y 
 
 # installs pip
 RUN apt-get install -y python3-pip
