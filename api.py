@@ -4,6 +4,7 @@ import flask
 from flask import request, jsonify, abort
 from OpenSSL import SSL
 import logging
+from model import *
 
 
 # setup flask app
@@ -18,15 +19,14 @@ if __name__ != '__main__':
 
 # endpoint to get forecast
 @app.route('/api/v1/7Aja2ByCyQ4rMBqA/predict', methods=['GET'])
-def job_recommendations():
+def predict_tweet():
     try:
         if 'tweet' in request.args:
-            tweet = request.args['id']
-            forecast = None # call model predict
-
+            tweet = request.args['text']
+            result = mode.predict(tweet) # call model predict
 
             if result == []: # generate response json
-                result = empty_response(forecast)
+                result = empty_response(result)
             else:
                 result = prepare_response(result, tweet)
         else:
