@@ -13,9 +13,9 @@ import re
 def load_artifact(item):
   # loads the vocabulary dict or model based on item parameter
   if item == 'vocab_dict':
-    return joblib.load(./'word_vocab_dict_v1.joblib')
+    return joblib.load('./artifacts/word_vocab_dict_v1.joblib')
   if item == 'model':
-    return joblib.load(./'tweet_sentiment_logistic_v1.joblib')
+    return joblib.load('./artifacts/tweet_sentiment_logistic_v1.joblib')
 
 def process_tweet(tweet):
 
@@ -89,6 +89,7 @@ def preprocess(predict_data):
   return predict_ar
 
 def predict(predict_data):
+  # preprocess input data
   predict_data_prep = preprocessing(predict_data)
 
   # load model
@@ -100,4 +101,5 @@ def predict(predict_data):
   # if prediction >= 0.5, label=1 else, label=0
   prediction = prediction(prediction>= 0.5).astype(int)
 
+  # return prediction on a 1D array E(0, 1)
   return prediction.ravel()
