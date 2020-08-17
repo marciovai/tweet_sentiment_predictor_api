@@ -3,21 +3,20 @@
 # BUILD: docker build -t model_api:latest . 
 # RUN: docker run -it -v /path/to/model_api/:/external_lib/ -p 5000:5000 -p 5432:5432 --network="host" brain_api sh -c 'cd external_lib && make api-start'
 
-FROM python:3.7.6-alpine
+FROM ubuntu:xenial
 
 ARG external_lib_path
 
-RUN apk add --no-cache cmake gcc libxml2 \
-       automake g++ subversion python3-dev \
-       libxml2-dev libxslt-dev lapack-dev gfortran \
-       postgresql-dev musl-dev freetype-dev \
-       libpng-dev libffi-dev make
+# prepares environment
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install software-properties-common locales -y 
 
-RUN python -m pip install --upgrade pip
+# installs pip
+RUN apt-get install -y python3-pip
+RUN pip3 install --upgrade pip
 
-# copy python packages to container
+# copy python packages list to contianer and install
 COPY ./requirements.txt .
-
 RUN pip install -r requirements.txt
 
 RUN mkdir external_lib
