@@ -1,4 +1,4 @@
-from .api import app
+from api import app
 
 # this file is used to pass the app context to WSGI Gunicorn
 
