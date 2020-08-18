@@ -21,9 +21,20 @@ if __name__ != '__main__':
 @app.route('/api/v1/7Aja2ByCyQ4rMBqA/predict', methods=['POST'])
 def predict_tweet():
     try:
-        if 'tweet' in request.args:
-            tweet = request.args['text']
-            result = mode.predict(tweet) # call model predict
+        # get json from request
+        json = request.get_json()
+        
+        # check if request sent an empty payload
+        if json != {}:
+            # get each id and tweet from request
+            ids = []
+            tweets = []
+            for id, tweet in json.items():
+                ids.append(id)
+                tweets.append(tweet)
+                
+            # call model predict
+            result = model.predict(tweets) 
 
             if result == []: # generate response json
                 result = empty_response(result)
