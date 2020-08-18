@@ -52,7 +52,7 @@ def predict_tweet():
 # generates response when no data is found for tweet
 def empty_response(ids):
     # return ids for empty response
-    app.logger.info("Empty response for tweets=%(ids)s", {'ids': ids})
+    app.logger.info("Empty response for ids: %(ids)s", {'ids': ids})
     result = {id:[] for id in ids}
     return result
 
@@ -68,7 +68,7 @@ def prepare_response(ids, result):
 
         result_dict[id] = prediction
 
-    app.logger.info("Empty response for tweets=%(ids)s", {'ids': ids})
+    app.logger.info("Response with data for ids: %(ids)s", {'ids': ids})
     return result_dict
 
 # raises error if app fails
