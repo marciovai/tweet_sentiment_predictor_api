@@ -58,7 +58,7 @@ def empty_response(ids):
 def prepare_response(ids, result):
     result_dict = {}
     for id, prediction in zip(ids, result):
-        result_dict.setdefault(id, []).append(prediction) 
+        result_dict[id] = prediction
 
     app.logger.info("Empty response for tweets=%(ids)s", {'ids': ids})
     return result_dict
