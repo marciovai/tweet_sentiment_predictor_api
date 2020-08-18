@@ -37,9 +37,9 @@ def predict_tweet():
             result = predict(tweets) 
 
             if result == []: # generate response json
-                result = empty_response(result)
+                result = empty_response(ids)
             else:
-                result = prepare_response(result, tweet)
+                result = prepare_response(ids, result)
         else:
             raise Exception('')
 
@@ -49,17 +49,18 @@ def predict_tweet():
         abort(400)
 
 # generates response when no data is found for tweet
-def empty_response(tweet):
-    app.logger.info("Empty response for tweet=%(tweet)s", {'text': tweet})
-    return {user_id: []}
+def empty_response(ids):
+    app.logger.info("Empty response for tweets=%(ids)s", {'ids': ids})
+    result = {id:[] for id in ids}
+    return result
 
 # generates response for case when there is data
-def prepare_response(result, tweet):
+def prepare_response(ids, result):
     result_dict = {}
-    for k, v in result:
-        result_dict.setdefault(k, []).append(v) 
+    for id, prediction in zip(ids, result)
+        result_dict.setdefault(id, []).append(prediction) 
 
-    app.logger.info('Response with data for tweet={}'.format(tweet))
+    app.logger.info("Empty response for tweets=%(ids)s", {'ids': ids})
     return result_dict
 
 # raises error if app fails
