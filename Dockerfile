@@ -5,9 +5,6 @@
 # 
 FROM ubuntu:xenial
 
-# argument passed when RUN is called to append the host directory inside the container
-ARG external_lib_path
-
 # update environment packages
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install software-properties-common -y 
