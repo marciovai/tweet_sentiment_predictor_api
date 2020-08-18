@@ -35,8 +35,9 @@ def predict_tweet():
 
             # call model predict
             result = predict(tweets) 
-
-            if result == []: # generate response json
+            
+            # generate response json
+            if result == []: 
                 result = empty_response(ids)
             else:
                 result = prepare_response(ids, result)
@@ -50,6 +51,7 @@ def predict_tweet():
 
 # generates response when no data is found for tweet
 def empty_response(ids):
+    # return ids for empty response
     app.logger.info("Empty response for tweets=%(ids)s", {'ids': ids})
     result = {id:[] for id in ids}
     return result
@@ -57,12 +59,13 @@ def empty_response(ids):
 # generates response for case when there is data
 def prepare_response(ids, result):
     result_dict = {}
+    # parse predictions to string text and append to dict
     for id, prediction in zip(ids, result):
         if prediction == 0:
             prediction = "Negative"
         if prediction == 1:
             prediction = "Positive"
-            
+
         result_dict[id] = prediction
 
     app.logger.info("Empty response for tweets=%(ids)s", {'ids': ids})
