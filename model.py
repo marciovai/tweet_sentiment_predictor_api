@@ -90,7 +90,6 @@ def preprocess(predict_data):
   return predict_ar
 
 def predict(predict_data):
-  import pdb;pdb.set_trace()
   # preprocess input data
   predict_data_prep = preprocess(predict_data)
 
