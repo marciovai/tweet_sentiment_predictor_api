@@ -90,7 +90,7 @@ def preprocess(predict_data):
 
 def predict(predict_data):
   # preprocess input data
-  predict_data_prep = preprocessing(predict_data)
+  predict_data_prep = preprocess(predict_data)
 
   # load model
   model = load_artifact('model')
