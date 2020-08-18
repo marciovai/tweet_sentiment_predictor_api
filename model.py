@@ -60,8 +60,8 @@ def preprocess(predict_data):
   # prepare data
 
   # load list of stopwords from NLTK
-  nltk.download('stopwords')
-  nltk.download('punkt')
+  nltk.download('stopwords', quiet=True)
+  nltk.download('punkt', quiet=True)
 
   # save stopwords in a Python set
   stop_words = set(stopwords.words('english'))
