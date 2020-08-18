@@ -4,7 +4,7 @@ import flask
 from flask import request, jsonify, abort
 from OpenSSL import SSL
 import logging
-from model import *
+from .model import *
 
 
 # setup flask app
@@ -32,7 +32,7 @@ def predict_tweet():
             for id, tweet in json.items():
                 ids.append(id)
                 tweets.append(tweet)
-                
+
             # call model predict
             result = model.predict(tweets) 
 
