@@ -34,7 +34,7 @@ def predict_tweet():
                 tweets.append(tweet)
 
             # call model predict
-            result = model.predict(tweets) 
+            result = predict(tweets) 
 
             if result == []: # generate response json
                 result = empty_response(result)
