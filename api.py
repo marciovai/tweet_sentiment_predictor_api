@@ -18,7 +18,7 @@ if __name__ != '__main__':
     app.logger.setLevel(gunicorn_logger.level)
 
 # endpoint to get forecast
-@app.route('/api/v1/7Aja2ByCyQ4rMBqA/predict', methods=['GET'])
+@app.route('/api/v1/7Aja2ByCyQ4rMBqA/predict', methods=['POST'])
 def predict_tweet():
     try:
         if 'tweet' in request.args:
