@@ -57,7 +57,7 @@ def empty_response(ids):
 # generates response for case when there is data
 def prepare_response(ids, result):
     result_dict = {}
-    for id, prediction in zip(ids, result)
+    for id, prediction in zip(ids, result):
         result_dict.setdefault(id, []).append(prediction) 
 
     app.logger.info("Empty response for tweets=%(ids)s", {'ids': ids})
