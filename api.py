@@ -4,7 +4,7 @@ import flask
 from flask import request, jsonify, abort
 from OpenSSL import SSL
 import logging
-from .model import *
+from model import *
 
 
 # setup flask app
