@@ -5,8 +5,6 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import log_loss, accuracy_score
-import inspect
 import joblib
 import re
 
