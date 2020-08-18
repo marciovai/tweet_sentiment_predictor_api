@@ -66,9 +66,9 @@ def preprocess(predict_data):
 
   # save stopwords in a Python set
   stop_words = set(stopwords.words('english'))
-  if not word_vocab_dict:
-    # load vocabulary dict to get word count features
-    word_vocab_dict = load_artifact('vocab_dict')
+
+  # load vocabulary dict to get word count features
+  word_vocab_dict = load_artifact('vocab_dict')
 
   # list to store processed tweets
   predict_tweets_list = []
@@ -94,9 +94,8 @@ def predict(predict_data):
   # preprocess input data
   predict_data_prep = preprocess(predict_data)
 
-  if not model:
-    # load model
-    model = load_artifact('model')
+  # load model
+  model = load_artifact('model')
 
   # call model predict
   prediction = model.predict(predict_data_prep)
