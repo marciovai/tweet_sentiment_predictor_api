@@ -100,7 +100,7 @@ def predict(predict_data):
   prediction = model.predict(predict_data_prep)
 
   # if prediction >= 0.5, label=1 else, label=0
-  prediction = prediction(prediction>= 0.5).astype(int)
+  prediction = (prediction>= 0.5).astype(int)
 
   # return prediction on a 1D array E(0, 1)
   return prediction.ravel()
