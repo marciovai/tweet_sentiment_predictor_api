@@ -17,7 +17,7 @@ def load_artifact(item):
   if item == 'model':
     return joblib.load('./artifacts/tweet_sentiment_logistic_v1.joblib')
 
-def process_tweet(tweet):
+def process_tweet(tweet, stop_words):
 
   # remove URLs from the tweet
   tweet = re.sub(r"http\S+", "", tweet)
@@ -74,7 +74,7 @@ def preprocess(predict_data):
 
   # iterate over each row, call process(tweet) and save it on predict_tweets_list
   for tweet in predict_data:
-    tweet = process_tweet(tweet)
+    tweet = process_tweet(tweet, stop_words)
     predict_tweets_list.append(tweet)
 
   # call get_tweet_word_frequencies() and store results in a DataFrame
