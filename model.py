@@ -10,6 +10,16 @@ import re
 
 
 def load_artifact(item):
+  # Receives a string as input indicating which artifact object
+  # to load and returns it to the calling method
+
+  # Parameters:
+  #    item (str): The item to be loaded and returned
+
+  # Returns:
+  #   model (LogisticRegression): LogisticRegression model
+  #or word_vocab_dict (dict): dict with corpus word frequencies
+    
   # loads the vocabulary dict or model based on item parameter
   if item == 'vocab_dict':
     return joblib.load('./artifacts/word_vocab_dict_v1.joblib')
@@ -17,6 +27,15 @@ def load_artifact(item):
     return joblib.load('./artifacts/tweet_sentiment_logistic_v1.joblib')
 
 def process_tweet(tweet, stop_words):
+  # Receives a raw tweet, list of stop words and performs all the
+  # traditional NLP processing steps before modeling
+
+  # Parameters:
+  #    tweet (str): Tweet raw string body
+  #    stop_words (set(str)): set containing English stopwords from NLTK
+
+  # Returns:
+  #   tweet (str): Processed tweet ready to be modeled
 
   # remove URLs from the tweet
   tweet = re.sub(r"http\S+", "", tweet)
@@ -40,6 +59,18 @@ def process_tweet(tweet, stop_words):
   return tweet
 
 def get_tweet_word_frequencies(word_vocab_dict, tweet_text):
+  # Receives a count of sentiment frequencies for each word in the entire
+  # corpus, a tweet and computes the word frequencies to it
+
+  # Parameters:
+  #    word_vocab_dict (dict): contains words and sentiment as keys and 
+  # total count in the corpus as value
+  #    tweet_text (str): preprocessed tweet to generate word frequencies
+
+  # Returns:
+  #   list (int): two integers, for positive and negative word frequencies
+  # in the tweet
+
   # initialize total frequency variables
   pos_total_freq = 0
   neg_total_freq = 0
@@ -56,6 +87,16 @@ def get_tweet_word_frequencies(word_vocab_dict, tweet_text):
   return [neg_total_freq, pos_total_freq]
 
 def preprocess(predict_data):
+  # Given a list of raw tweets, performs all the preprocessing steps to it
+  # before it can be fed to the model as input
+
+  # Parameters:
+  #    predict_data (list(str)): list of raw tweets text
+
+  # Returns:
+  #   list (list(int)): inputed tweets preprocessed and ready
+  # for making predictions
+
   # prepare data
 
   # load list of stopwords from NLTK
@@ -88,6 +129,15 @@ def preprocess(predict_data):
   return predict_ar
 
 def predict(predict_data):
+  # Main module execution method, once called by the api to make predictions,
+  # it calls all other methods in the module and returns the prediction
+
+  # Parameters:
+  #    predict_data (list(str)): list of raw tweets text
+
+  # Returns:
+  #   list (int): model prediction as integers in (0, 1)
+
   # preprocess input data
   predict_data_prep = preprocess(predict_data)
 
