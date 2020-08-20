@@ -1,7 +1,7 @@
 # File for building Model and API environment inside a container
 # The Python environment will be based off the requirements.txt that can be found in the same folder
 # BUILD: docker build -t model_api:latest . 
-# RUN: docker run -it -v /path/to/model_api/:/external_lib/ -p 5000:5000 -p 5432:5432 --network="host" model_api sh -c 'cd external_lib && make api-start'
+# RUN: docker run -it -v /path/to/model_api/:/external_lib/ -p 5000:5000 --network="host" model_api sh -c 'cd external_lib && make api-start'
 # 
 FROM ubuntu:xenial
 
