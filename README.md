@@ -11,7 +11,7 @@ docker build -t model_api:latest .
 
 Once built, the Dockerfile assumes the project files are on the root folder. To RUN the API use:
 ```bash
-docker run -it -v /path/to/model_api/:/external_lib/ -p 5000:5000 --network="host" model_api sh -c 'cd external_lib && make api-start' 
+docker run -it -v /path/to/model_api/:/external_lib/ -p 5000:5000 model_api sh -c 'cd external_lib && make api-start' 
 ```
 
 It will start the API on port 5000 to listen to connections.
