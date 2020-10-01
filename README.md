@@ -1,5 +1,5 @@
 # tweet_sentiment_predictor_api
-Template for easy deploying Machine Learning algorithms in production to be later consumed via an API.
+Template to make deploying Machine Learning algorithms in production easier and allow it to later be consumed via an API.
 
 This particular example is developed using Twitter Sentiment Prediction.
 
