@@ -1,6 +1,6 @@
 from api import app
 
-# this file is used to pass the app context to WSGI Gunicorn
+# Passes the app context to WSGI Gunicorn when running the API
 
 if __name__ == "__main__":
     context = ('server.crt', 'server.key')
